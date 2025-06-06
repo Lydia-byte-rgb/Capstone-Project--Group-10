@@ -88,22 +88,6 @@ Actual vs Predicted admissions
 #### SARIMA MODEL Actual vs Predicted admissions
 ![image](https://github.com/user-attachments/assets/f292a831-7f45-4b16-8996-d791d2194d29)
 
-SARIMA results plot diagnostics 
-![image](https://github.com/user-attachments/assets/6a7ee8ba-b106-4986-aff6-c7241419b3e8)
-
-##### Overview
-
-Standardized Residuals: Residuals fluctuate randomly around zero — a good sign of no obvious pattern.
-
-Histogram + KDE: Residuals are roughly bell-shaped, suggesting they’re nearly normally distributed.
-
-Q-Q Plot: Most points lie on the red line, indicating the residuals are close to normal, with slight deviation at the extremes.
-
-Correlogram: No significant spikes outside the shaded area — suggests residuals are not autocorrelated.
-
-#### SARIMA Forecast vs Actual Test Data
-![image](https://github.com/user-attachments/assets/03659351-3bdc-4bdf-8dc7-31941118d79b)
-
 ### Time Series Model Comparison
 ![image](https://github.com/user-attachments/assets/f0e636f9-8726-499f-b858-e6229490b9e8)
 
