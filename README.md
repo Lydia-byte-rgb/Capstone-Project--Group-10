@@ -1,106 +1,127 @@
-# COVID-19 Weekly Hospital Admissions Forecasting Using Time Series Models
+# Forecasting and Monitoring Hospitalization Trends from Respiratory Viruses in Kenya  
+(Using U.S. Government Data as a Proxy)
 
-## Overview
+## Project Overview
 
-This project aims to forecast weekly COVID-19 confirmed hospital admissions using various time series modeling techniques. The project is organized into two main phases across two Jupyter notebooks:
+Kenya faces challenges in tracking and predicting hospitalizations caused by respiratory viruses like COVID-19, Influenza, and RSV due to limited real-time health data. This project leverages publicly available hospitalization data from the United States (from CDC and HHS) as a proxy dataset.
 
-1. **Data Preparation and Exploration** (Notebook 1)
-2. **Modeling and Forecasting** (Notebook 2)
+Using this structured data, we build a pipeline to:
+- Analyze hospitalization trends
+- Engineer time series features
+- Train forecasting models
+- Evaluate prediction accuracy
 
-The end goal is to identify the most effective model for forecasting weekly hospital admissions to aid healthcare planning and pandemic preparedness.
-
----
-
-## Problem Statement
-
-During the COVID-19 pandemic, accurately forecasting hospital admissions has been critical for public health management. Given historical data on confirmed COVID-19 hospital admissions, the objective is to:
-
-- Explore time-dependent patterns
-- Develop forecasting models to predict future admissions
-- Compare model performance using robust evaluation metrics
+These insights are designed to guide the development of similar systems in Kenya when comparable data becomes available.
 
 ---
 
-## Notebooks Breakdown
+## Project Structure
 
-### 1. capstone_project_group_10.ipynb (Notebook 1)
-
-This notebook focuses on data understanding and preprocessing.
-
-**Key Activities:**
-- Imported raw admissions dataset (`RVR.csv`)
-- Explored column types and performed data cleaning
-  - Removed duplicates
-  - Handled missing values
-- Parsed and formatted `collection_date` as a datetime object
-- Plotted raw hospital admissions to inspect trends
-- Applied **seasonal decomposition** using `statsmodels` to detect:
-  - Long-term trends
-  - Seasonal effects
-  - Irregular components
-
-The goal here was to understand the structure of the time series and prepare it for modeling in the next phase.
+- `capstone_project_group_10.ipynb`: Exploratory Data Analysis (EDA) and preprocessing
+- `Final_Model_Notebook.ipynb`: Model training, evaluation, and forecasting
+- `/images`: Contains all output visualizations used below
 
 ---
 
-### 2. LSTM_Prediction_Model.ipynb (Notebook 2)
 
-This notebook contains the modeling workflow using five different forecasting techniques.
+## Exploratory Data Analysis (EDA)
 
-**Data Preparation:**
-- Created lag features (`lag_1` to `lag_5`) to capture temporal dependencies
-- Split data into training and testing sets (80/20 split)
-- Filled missing values in lag features with zeros
-
-**Models Implemented:**
-
-1. **Linear Regression**
-   - Simple baseline model using lagged features
-   - Fast to train and interpret
-
-2. **SARIMAX (Seasonal ARIMA with eXogenous variables)**
-   - Captures autoregressive (AR), integrated (I), and moving average (MA) components
-   - Handles seasonality effectively
-   - Parameter tuning performed using grid search
-
-3. **Facebook Prophet**
-   - Robust time series library developed by Meta
-   - Decomposes data into trend, seasonality, and holiday effects
-   - Automatically detects changepoints and seasonality
-
-4. **LSTM (Long Short-Term Memory)**
-   - Deep learning model using Keras
-   - Suitable for capturing long-term dependencies in time series
-   - Data reshaped into 3D tensors for sequential learning
-
-5. **Vector AutoRegression (VAR)**
-   - Multivariate time series model
-   - Leverages lag relationships between multiple time-dependent variables
-
-**Evaluation Metrics:**
-- **Mean Absolute Error (MAE)**
-- **Mean Squared Error (MSE)**
-- **R-squared (R²)**
-- **Visual comparison**: Actual vs Predicted plots
-
-Each model’s forecast was plotted against the actual values to assess temporal accuracy and overfitting risks.
+Initial exploration includes:
+- Temporal trends by virus
+- Hospital admissions by state and region
+- Missing data heatmaps
+- Weekly patterns
 
 ---
 
-## Dataset Details
+## Data Preparation & Feature Engineering
 
-- **Filename**: `RVR.csv`
-- **Source**: Presumed weekly COVID-19 hospital admissions records
-- **Target Variable**: `average_admissions_all_covid_confirmed`
-- **Time Index**: `collection_date`
-
-**Note:** Lagged features (`lag_1` to `lag_5`) are engineered in Notebook 2.
+To prepare the data for time series modeling:
+- Lag features and rolling statistics were added
+- Weekly grouping was applied
+- Target variable was renamed for modeling compatibility
+- SMA (Simple Moving Average) was also computed for benchmarking
 
 ---
 
-## Installation & Setup
+## Machine Learning Models
 
-Ensure the following packages are installed:
+We used Random Forest Regressor as the primary model. Additional techniques include:
+- GridSearchCV for hyperparameter tuning
+- Cross-validation
+- Feature importance analysis
 
-```bash
-pip install numpy pandas matplotlib seaborn scikit-learn tensorflow statsmodels prophet sktime
+---
+
+### Model Performance Visualizations
+### Plot predictions vs actual for Linear Regression
+![image](https://github.com/user-attachments/assets/4dc3c436-6271-4943-b3df-fa9c619a3892)
+
+#### Random Forest Predictions vs Actuals
+![image](https://github.com/user-attachments/assets/f749d9fc-72a7-404c-8121-4850a95f6624)
+
+#### XGBOOST MODEL Actual vs Predicted results
+![image](https://github.com/user-attachments/assets/546fad9f-ab55-443b-ab74-46c76987fd99)
+
+#### Comparison of baseline models (Linear Regression, Random Forest, XGBoost)
+![image](https://github.com/user-attachments/assets/4061663f-3c87-4826-93b6-a3097b55ad68)
+
+
+### Deep Learning Models
+LSTM model Actual vs Predicted Hospital admissions
+![image](https://github.com/user-attachments/assets/267aab50-1462-4842-9ee8-0526aca0ec93)
+
+
+### Time Series Models
+NAIVE FORECAST MODEL
+![image](https://github.com/user-attachments/assets/479a9341-493c-4104-840e-28de5a8dbbb0)
+The plot compares actual COVID-19 hospital admissions (blue line) with Random Forest Regressor predictions (orange line) from May 2023 to May 2024. The Random Forest model generally follows the overall trend of actual admissions, capturing peaks and troughs, though its predictions are smoother than the actual data. This smoothing might cause the model to slightly under or overestimate sharp changes. Despite these minor discrepancies in timing and magnitude, the plot suggests that the Random Forest model effectively captures the general patterns of COVID-19 admissions during the test period.
+
+#### PROPHET MODEL
+Actual vs Predicted admissions
+![image](https://github.com/user-attachments/assets/21d638af-602c-42b7-8319-bc68becf76cb)
+
+#### VAR MODEL actual vs predicted admissions
+![image](https://github.com/user-attachments/assets/0c307da3-8383-475e-aa99-d8a3bba40b17)
+
+
+#### SARIMA MODEL Actual vs Predicted admissions
+![image](https://github.com/user-attachments/assets/f292a831-7f45-4b16-8996-d791d2194d29)
+
+SARIMA results plot diagnostics 
+![image](https://github.com/user-attachments/assets/6a7ee8ba-b106-4986-aff6-c7241419b3e8)
+
+##### Overview
+
+Standardized Residuals: Residuals fluctuate randomly around zero — a good sign of no obvious pattern.
+
+Histogram + KDE: Residuals are roughly bell-shaped, suggesting they’re nearly normally distributed.
+
+Q-Q Plot: Most points lie on the red line, indicating the residuals are close to normal, with slight deviation at the extremes.
+
+Correlogram: No significant spikes outside the shaded area — suggests residuals are not autocorrelated.
+
+#### SARIMA Forecast vs Actual Test Data
+![image](https://github.com/user-attachments/assets/03659351-3bdc-4bdf-8dc7-31941118d79b)
+
+### Time Series Model Comparison
+![image](https://github.com/user-attachments/assets/f0e636f9-8726-499f-b858-e6229490b9e8)
+
+Comparison of Random Forest, LSTM, and SARIMA
+![image](https://github.com/user-attachments/assets/03970e71-d762-40f2-9772-0f3598f743a2)
+
+### Deployment images
+We locally deployed the SARIMA model using streamlit on ngrok app and the images below show the output.
+![image](https://github.com/user-attachments/assets/f8736de7-fe6a-46c1-a2c6-895aad653af0)
+![image](https://github.com/user-attachments/assets/a9e47f75-b60b-402e-81f9-eeaaa1b4a77a)
+
+---
+
+## Conclusion
+
+This project demonstrates a scalable pipeline for forecasting respiratory-related hospitalizations. By using U.S. data as a stand-in, we can design robust forecasting systems that will be critical when similar healthcare infrastructure is developed in Kenya.
+
+---
+
+## Tableau link
+
