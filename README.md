@@ -111,6 +111,7 @@ Comparison of Random Forest, LSTM, and SARIMA
 ![image](https://github.com/user-attachments/assets/03970e71-d762-40f2-9772-0f3598f743a2)
 
 ### Deployment images
+We locally deployed the SARIMA model using streamlit on ngrok app and the images below show the output.
 ![image](https://github.com/user-attachments/assets/f8736de7-fe6a-46c1-a2c6-895aad653af0)
 ![image](https://github.com/user-attachments/assets/a9e47f75-b60b-402e-81f9-eeaaa1b4a77a)
 
@@ -122,10 +123,5 @@ This project demonstrates a scalable pipeline for forecasting respiratory-relate
 
 ---
 
-## How to Run
-
-1. Clone this repository:
-   ```bash
-   git clone https://github.com/yourusername/your-repo-name.git
-   cd your-repo-name
+## Tableau link
 
