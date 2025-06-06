@@ -23,6 +23,7 @@ These insights are designed to guide the development of similar systems in Kenya
 
 ---
 
+
 ## Exploratory Data Analysis (EDA)
 
 Initial exploration includes:
@@ -53,40 +54,65 @@ We used Random Forest Regressor as the primary model. Additional techniques incl
 ---
 
 ### Model Performance Visualizations
+### Plot predictions vs actual for Linear Regression
+![image](https://github.com/user-attachments/assets/4dc3c436-6271-4943-b3df-fa9c619a3892)
 
 #### Random Forest Predictions vs Actuals
-![RF vs Actual](images/model_plot_1.png)
+![image](https://github.com/user-attachments/assets/f749d9fc-72a7-404c-8121-4850a95f6624)
 
-#### Feature Importance from Random Forest
-![Feature Importance](images/model_plot_2.png)
+#### XGBOOST MODEL Actual vs Predicted results
+![image](https://github.com/user-attachments/assets/546fad9f-ab55-443b-ab74-46c76987fd99)
 
-#### Residual Plot
-![Residuals](images/model_plot_3.png)
+#### Comparison of baseline models (Linear Regression, Random Forest, XGBoost)
+![image](https://github.com/user-attachments/assets/4061663f-3c87-4826-93b6-a3097b55ad68)
 
-#### Forecast vs Actual (Full Test Set)
-![Full Forecast](images/model_plot_4.png)
 
-#### SMA Baseline Comparison
-![SMA Baseline](images/model_plot_5.png)
+### Deep Learning Models
+LSTM model Actual vs Predicted Hospital admissions
+![image](https://github.com/user-attachments/assets/267aab50-1462-4842-9ee8-0526aca0ec93)
 
-#### County-Specific Forecasts (Examples)
 
-Example 1  
-![County Forecast 1](images/model_plot_6.png)
+### Time Series Models
+NAIVE FORECAST MODEL
+![image](https://github.com/user-attachments/assets/479a9341-493c-4104-840e-28de5a8dbbb0)
+The plot compares actual COVID-19 hospital admissions (blue line) with Random Forest Regressor predictions (orange line) from May 2023 to May 2024. The Random Forest model generally follows the overall trend of actual admissions, capturing peaks and troughs, though its predictions are smoother than the actual data. This smoothing might cause the model to slightly under or overestimate sharp changes. Despite these minor discrepancies in timing and magnitude, the plot suggests that the Random Forest model effectively captures the general patterns of COVID-19 admissions during the test period.
 
-Example 2  
-![County Forecast 2](images/model_plot_7.png)
+#### PROPHET MODEL
+Actual vs Predicted admissions
+![image](https://github.com/user-attachments/assets/21d638af-602c-42b7-8319-bc68becf76cb)
 
-Example 3  
-![County Forecast 3](images/model_plot_8.png)
+#### VAR MODEL actual vs predicted admissions
+![image](https://github.com/user-attachments/assets/0c307da3-8383-475e-aa99-d8a3bba40b17)
 
-#### Additional Evaluation Visuals
 
-Prediction error histogram  
-![Error Histogram](images/model_plot_9.png)
+#### SARIMA MODEL Actual vs Predicted admissions
+![image](https://github.com/user-attachments/assets/f292a831-7f45-4b16-8996-d791d2194d29)
 
-Forecast windows comparison  
-![Forecast Windows](images/model_plot_10.png)
+SARIMA results plot diagnostics 
+![image](https://github.com/user-attachments/assets/6a7ee8ba-b106-4986-aff6-c7241419b3e8)
+
+##### Overview
+
+Standardized Residuals: Residuals fluctuate randomly around zero — a good sign of no obvious pattern.
+
+Histogram + KDE: Residuals are roughly bell-shaped, suggesting they’re nearly normally distributed.
+
+Q-Q Plot: Most points lie on the red line, indicating the residuals are close to normal, with slight deviation at the extremes.
+
+Correlogram: No significant spikes outside the shaded area — suggests residuals are not autocorrelated.
+
+#### SARIMA Forecast vs Actual Test Data
+![image](https://github.com/user-attachments/assets/03659351-3bdc-4bdf-8dc7-31941118d79b)
+
+### Time Series Model Comparison
+![image](https://github.com/user-attachments/assets/f0e636f9-8726-499f-b858-e6229490b9e8)
+
+Comparison of Random Forest, LSTM, and SARIMA
+![image](https://github.com/user-attachments/assets/03970e71-d762-40f2-9772-0f3598f743a2)
+
+### Deployment images
+![image](https://github.com/user-attachments/assets/f8736de7-fe6a-46c1-a2c6-895aad653af0)
+![image](https://github.com/user-attachments/assets/a9e47f75-b60b-402e-81f9-eeaaa1b4a77a)
 
 ---
 
