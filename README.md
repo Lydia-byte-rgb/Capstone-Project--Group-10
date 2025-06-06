@@ -29,7 +29,6 @@ These insights are designed to guide the development of similar systems in Kenya
 Initial exploration includes:
 - Temporal trends by virus
 - Hospital admissions by state and region
-- Missing data heatmaps
 - Weekly patterns
 
 ---
@@ -46,10 +45,7 @@ To prepare the data for time series modeling:
 
 ## Machine Learning Models
 
-We used Random Forest Regressor as the primary model. Additional techniques include:
-- GridSearchCV for hyperparameter tuning
-- Cross-validation
-- Feature importance analysis
+We used Linear regression as our baseline model. Other models we used were random forest and XGBoost as shown below.
 
 ---
 
@@ -75,7 +71,7 @@ LSTM model Actual vs Predicted Hospital admissions
 ### Time Series Models
 NAIVE FORECAST MODEL
 ![image](https://github.com/user-attachments/assets/479a9341-493c-4104-840e-28de5a8dbbb0)
-The plot compares actual COVID-19 hospital admissions (blue line) with Random Forest Regressor predictions (orange line) from May 2023 to May 2024. The Random Forest model generally follows the overall trend of actual admissions, capturing peaks and troughs, though its predictions are smoother than the actual data. This smoothing might cause the model to slightly under or overestimate sharp changes. Despite these minor discrepancies in timing and magnitude, the plot suggests that the Random Forest model effectively captures the general patterns of COVID-19 admissions during the test period.
+This is was our baseline time series model
 
 #### PROPHET MODEL
 Actual vs Predicted admissions
@@ -108,4 +104,4 @@ This project demonstrates a scalable pipeline for forecasting respiratory-relate
 ---
 
 ## Tableau link
-
+[tableau](https://public.tableau.com/views/Book2_17413502549780/HospitalizationTrendsacrossthecountry?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
